@@ -8,10 +8,12 @@ This course guides the follower through an extensive process of setting up a
 Python application and following best practices to setup a proper CI/CD
 pipeline on Jenkins and eventually deploying to AWS.
 
-## How to run?
+## How to run
 
 This section requires more details, but a special note is to run docker run with
-the --env-file=.env tag.
+the --env-file=.env tag. Same goes for docker-compose when the .env file isn't
+inthe directory where you run the docker-compose command or is named differently
+than .env. See for more info the [docker compose docs website](https://docs.docker.com/compose/environment-variables/).
 
 ## Some Extra Notes
 

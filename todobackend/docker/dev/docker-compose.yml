@@ -8,11 +8,11 @@ services:
     links:
       - db
     environment:
-      DJANGO_SETTINGS_MODULE: todobackend.settings.test
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      TEST_OUTPUT_DIR: /reports
+      DJANGO_SETTINGS_MODULE: $DJANGO_SETTINGS_MODULE
+      MYSQL_HOST: $MYSQL_HOST
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      TEST_OUTPUT_DIR: $TEST_OUTPUT_DIR
 
   # This agent is required to poll the db server to see if a connection
   # can be established before running the tests.
@@ -21,18 +21,18 @@ services:
     volumes:
       - ../../ansible/probe.yml:/ansible/site.yml
     links:
-      - "db"
+      - 'db'
     environment:
-      PROBE_HOST: "db"
-      PROBE_PORT: "3306"
+      PROBE_HOST: 'db'
+      PROBE_PORT: $MYSQL_PORT
 
   db:
     image: mysql:latest # The guide uses mysql:5.6
-    hostname: db
+    hostname: $MYSQL_HOST
     expose:
-      - "3306"
+      - $MYSQL_PORT
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
 
   cache:
     build: 
