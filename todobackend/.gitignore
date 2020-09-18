@@ -1,0 +1,12 @@
+venv
+
+# Ignore compiled Python source files
+*.pyc
+
+*.sqlite3
+
+*.coverage
+*coverage.xml
+*unittests.xml
+
+.env
