@@ -1,4 +1,4 @@
-Django==1.9
-django-cors-headers==1.1.0
-djangorestframework==3.3.0
-PyMySQL[rsa]==0.10.1
+# The dot refers to the install_requires section inside setup.py.
+# See https://caremad.io/posts/2013/07/setup-vs-requirement/ for why you still
+# need a requirements.txt file even though it only refers to setup.py
+.

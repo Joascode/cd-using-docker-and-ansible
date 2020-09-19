@@ -73,13 +73,13 @@ echo "Setting up secure MySQL installation"
 mysql -sfu root << EOF
     IF (SELECT COUNT(*) FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')) != 0
     THEN
-        (UPDATE mysql.user SET authentication_string=PASSWORD('root') WHERE User='root';
+        UPDATE mysql.user SET authentication_string=PASSWORD('root') WHERE User='root';
         DELETE FROM mysql.user WHERE User='';
         DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
         DROP DATABASE IF EXISTS test;
         DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
-        FLUSH PRIVILEGES;)
-    END IF
+        FLUSH PRIVILEGES;
+    END IF;
 EOF
 
 echo "Create database in MySQL"
