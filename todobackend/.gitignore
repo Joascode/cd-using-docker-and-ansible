@@ -10,3 +10,5 @@ venv
 *unittests.xml
 
 .env
+
+target

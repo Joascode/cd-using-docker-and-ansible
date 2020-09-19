@@ -15,6 +15,18 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       TEST_OUTPUT_DIR: $TEST_OUTPUT_DIR
+  
+  builder:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - "../../target:/wheelhouse"
+    volumes_from:
+      - "cache"
+    entrypoint: "entrypoint.sh"
+    command: ["pip", "wheel", "--no-index", "-f /build", "."]
+    
 
   # This agent is required to poll the db server to see if a connection
   # can be established before running the tests.
@@ -42,4 +54,5 @@ services:
       dockerfile: docker/dev/Dockerfile
     volumes:
       - /tmp/cache:/cache
+      - /build
     entrypoint: "true"

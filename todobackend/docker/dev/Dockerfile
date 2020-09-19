@@ -16,7 +16,7 @@ ENV WHEELHOUSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse 
 
 # OUTPUT: Build artefacts (Wheels) are output here
 # OUTPUT: Test reports are output here
-VOLUME [ "/reports", "/wheelhouse" ]
+VOLUME [ "/reports", "/wheelhouse", "/build" ]
 
 # Add test entrypoint script
 COPY scripts/test.sh /usr/local/bin/test.sh
